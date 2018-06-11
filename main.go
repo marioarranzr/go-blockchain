@@ -3,15 +3,15 @@ package main
 import (
 	"crypto/sha256"
 	"encoding/hex"
-	"time"
-	"os"
+	"encoding/json"
+	"github.com/davecgh/go-spew/spew"
+	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
+	"io"
 	"log"
 	"net/http"
-	"github.com/gorilla/mux"
-	"encoding/json"
-	"io"
-	"github.com/davecgh/go-spew/spew"
-	"github.com/joho/godotenv"
+	"os"
+	"time"
 )
 
 // -----------------------------------------------------------------------------
@@ -173,4 +173,3 @@ func respondWithJSON(w http.ResponseWriter, r *http.Request, code int, payload i
 	w.WriteHeader(code)
 	w.Write(response)
 }
-

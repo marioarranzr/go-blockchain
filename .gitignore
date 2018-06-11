@@ -13,3 +13,5 @@
 
 # Intellij, Goland
 .idea
+
+.credentials.yml
