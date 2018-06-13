@@ -1,0 +1,43 @@
+# go-blockchain pipeline.yml
+
+jobs:
+
+- name: job-unit-tests
+  plan:
+  - get: go-blockchain
+    trigger: true
+  - task: task-unit-tests
+    file: go-blockchain/ci/tasks/task-unit-tests.yml
+    on_success:
+      do:
+      - put: go-blockchain
+        params:
+          repository: go-blockchain
+
+- name: job-build
+  plan:
+    - get: go-blockchain
+      trigger: true
+      passed: [job-unit-tests]
+    - task: task-build
+      file: go-blockchain/ci/tasks/task-build.yml
+    - put: resource-dump-to-dockerhub
+      params: { build: "dist"}
+
+resources:
+
+- name: go-blockchain
+  type: git
+  source:
+    #uri: https://github.com/mario800ml/go-blockchain
+    uri: git@github.com:mario800ml/go-blockchain.git
+    branch: test-pipeline
+    private_key: {{git_private_key}}
+
+- name: resource-dump-to-dockerhub
+  type: docker-image
+  source:
+    repository: mario800ml/go-blockchain
+    tag: latest
+    username: mario800ml
+    password: {{dockerhub_password}}
