@@ -31,7 +31,7 @@ resources:
   source:
     #uri: https://github.com/mario800ml/go-blockchain
     uri: git@github.com:mario800ml/go-blockchain.git
-    branch: test-pipeline
+    branch: master
     private_key: {{git_private_key}}
 
 - name: resource-dump-to-dockerhub
