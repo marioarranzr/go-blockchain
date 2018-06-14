@@ -25,9 +25,11 @@ go get ./...
 
 # Put the binary go-blockchain filename in /dist
 go build -o dist/go-blockchain ./main.go
+#cp ./main.go dist/go-blockchain
+cp ./main.go dist
 
 # cp the Dockerfile into /dist
-cp ci/Dockerfile dist/Dockerfile
+cp Dockerfile dist/Dockerfile
 
 # Check
 echo "List whats in the /dist directory"

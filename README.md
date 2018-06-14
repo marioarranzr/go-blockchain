@@ -11,3 +11,41 @@ POST localhost:8080
 
 {"BPM":60}
 ```
+
+### Run with local concourse
+
+>`docker-compose up` creates concourse and postgre SQL database (if don't want to keep it running just add `-d`)
+
+>`fly login -t main -c http://127.0.0.1:8080`
+
+>`fly -t main sp -p go-blockchain -c ci/pipeline.yml -l /.credentials.yml` starts a pipeline (`fly -t {team} sp -p {pipelineName} -c {pipelineFile} -l {credentialsYmlFile}`)
+
+> Credentials file must be like this:
+```yaml
+git_private_key: |
+  -----BEGIN RSA PRIVATE KEY-----
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  -----END RSA PRIVATE KEY-----
+
+dockerhub_password: XXXXXXXX
+```
+
+>We shoud see the pipeline going to `http://127.0.0.1:8080`
+
+>Then running `docker build -t go-blockchain .` from the root, where we have the Dockerfile, we build the image and we can see it running `docker ps -a`
+
+>`docker run -p 33333:8080 -t go-blockchain` run the image in port `33333`
+
+### Fly instalation
+
+```posh
+sudo mkdir -p /usr/local/bin
+Download this file (Mac): https://github.com/concourse/concourse/releases/download/v3.9.0/fly_darwin_amd64
+
+sudo mv fly_darwin_amd64 fly
+
+sudo mv ~/Downloads/fly /usr/local/bin
+sudo chmod 0755 /usr/local/bin/fly
+```
