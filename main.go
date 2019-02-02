@@ -1,12 +1,13 @@
 package main
 
 import (
-	"github.com/davecgh/go-spew/spew"
-	"github.com/joho/godotenv"
 	"log"
 	"time"
-	"github.com/mario800ml/go-blockchain/internal/server"
-	"github.com/mario800ml/go-blockchain/internal/handler"
+
+	"github.com/davecgh/go-spew/spew"
+	"github.com/joho/godotenv"
+	"github.com/marioarranzr/go-blockchain/internal/handler"
+	"github.com/marioarranzr/go-blockchain/internal/server"
 )
 
 // -----------------------------------------------------------------------------
@@ -20,7 +21,7 @@ func main() {
 
 	go func() {
 		t := time.Now()
-		genesisBlock := handler.Block{0, t.String(), 0, "", ""}
+		genesisBlock := handler.Block{Timestamp: t.String()}
 		spew.Dump(genesisBlock)
 		handler.Blockchain = append(handler.Blockchain, genesisBlock)
 	}()

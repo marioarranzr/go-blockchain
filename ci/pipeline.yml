@@ -29,15 +29,15 @@ resources:
 - name: go-blockchain
   type: git
   source:
-    #uri: https://github.com/mario800ml/go-blockchain
-    uri: git@github.com:mario800ml/go-blockchain.git
+    #uri: https://github.com/marioarranzr/go-blockchain
+    uri: git@github.com:marioarranzr/go-blockchain.git
     branch: master
     private_key: {{git_private_key}}
 
 - name: resource-dump-to-dockerhub
   type: docker-image
   source:
-    repository: mario800ml/go-blockchain
+    repository: marioarranzr/go-blockchain
     tag: latest
-    username: mario800ml
+    username: marioarranzr
     password: {{dockerhub_password}}

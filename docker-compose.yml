@@ -25,3 +25,10 @@ services:
     - CONCOURSE_BASIC_AUTH_PASSWORD
     - CONCOURSE_NO_REALLY_I_DONT_WANT_ANY_AUTH=true
     - CONCOURSE_WORKER_GARDEN_NETWORK
+
+  web:
+    image: go-blockchain
+    deploy:
+    ports:
+      - "2000:8080"
+    env_file: .env

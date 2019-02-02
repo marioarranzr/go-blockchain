@@ -1,13 +1,14 @@
 package handler
 
 import (
-	"net/http"
-	"encoding/json"
-	"io"
-	"github.com/davecgh/go-spew/spew"
-	"time"
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
+	"io"
+	"net/http"
+	"time"
+
+	"github.com/davecgh/go-spew/spew"
 )
 
 func HandleGetBlockchain(w http.ResponseWriter, r *http.Request) {

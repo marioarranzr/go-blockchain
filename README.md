@@ -14,6 +14,8 @@ POST localhost:8080
 
 ### Run with local concourse
 
+>`docker build -f Dockerfile.pi -t go-blockchain .` builds the image
+
 >`docker-compose up` creates concourse and postgre SQL database (if don't want to keep it running just add `-d`)
 
 >`fly login -t main -c http://127.0.0.1:8080`
@@ -37,15 +39,3 @@ dockerhub_password: XXXXXXXX
 >Then running `docker build -t go-blockchain .` from the root, where we have the Dockerfile, we build the image and we can see it running `docker ps -a`
 
 >`docker run -p 33333:8080 -t go-blockchain` run the image in port `33333`
-
-### Fly instalation
-
-```posh
-sudo mkdir -p /usr/local/bin
-Download this file (Mac): https://github.com/concourse/concourse/releases/download/v3.9.0/fly_darwin_amd64
-
-sudo mv fly_darwin_amd64 fly
-
-sudo mv ~/Downloads/fly /usr/local/bin
-sudo chmod 0755 /usr/local/bin/fly
-```

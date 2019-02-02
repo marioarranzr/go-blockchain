@@ -11,14 +11,14 @@ ls -lat
 # Setup the gopath based on current directory.
 export GOPATH=$PWD
 
-# Now we must move our code from the current directory ./go-blockchain to $GOPATH/src/github.com/mario800ml/go-blockchain
-mkdir -p src/github.com/mario800ml/
-cp -R ./go-blockchain src/github.com/mario800ml/.
+# Now we must move our code from the current directory ./go-blockchain to $GOPATH/src/github.com/marioarranzr/go-blockchain
+mkdir -p src/github.com/marioarranzr/
+cp -R ./go-blockchain src/github.com/marioarranzr/.
 
 # All set and everything is in the right place for go
 echo "Gopath is: " $GOPATH
 echo "pwd is: " $PWD
-cd src/github.com/mario800ml/go-blockchain
+cd src/github.com/marioarranzr/go-blockchain
 ls -lat
 
 go get ./...

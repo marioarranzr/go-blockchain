@@ -1,12 +1,13 @@
 package server
 
 import (
-	"os"
 	"log"
 	"net/http"
+	"os"
 	"time"
+
 	"github.com/gorilla/mux"
-	"github.com/mario800ml/go-blockchain/internal/handler"
+	"github.com/marioarranzr/go-blockchain/internal/handler"
 )
 
 // -----------------------------------------------------------------------------
@@ -15,7 +16,10 @@ import (
 func Run() error {
 	mux := makeMuxRouter()
 	httpAddr := os.Getenv("ADDR")
-	log.Println("Listening on ", os.Getenv("ADDR"))
+	if httpAddr == "" {
+		httpAddr = "8080"
+	}
+	log.Println("Listening on ", httpAddr)
 	s := &http.Server{
 		Addr:           ":" + httpAddr,
 		Handler:        mux,
